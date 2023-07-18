@@ -5,11 +5,11 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "fix": "npm run lint -- --fix",
-    "prettier": "yarn prettier --write src/index.ts",
+    "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "lint:fixed": "eslint . --fix",
     "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "lint-prettier": "yarn lint && yarn prettier:check",
+    "prettier:fixed": "prettier --write .",
+    "lint-prettier": "yarn lint:check && yarn prettier:check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
