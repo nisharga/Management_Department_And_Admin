@@ -15,4 +15,5 @@ router.patch(
     ManagementDepartmentController.updateManagementDepartment
   );
 
+  router.get('/', ManagementDepartmentController.getSinglelManagementDepartment);
 export const ManagementDepartmentRoutes = router;
