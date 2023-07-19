@@ -1,4 +1,4 @@
-import { ErrorRequestHandler } from "express"
+import { ErrorRequestHandler, Response } from "express"
 import { ZodError } from "zod"
 import config from "../config"
 import ApiError from "../errors/ApiError"
@@ -11,12 +11,13 @@ import { IGenericErrorMessage } from "../interfaces/errors"
  
 
 const globalErrorHandler : ErrorRequestHandler 
-= ( error, req, res  ) => {
+= ( error, req, res : Response ) => {
 
     // eslint-disable-next-line no-unused-expressions
     config.env === 'development' ?
     // eslint-disable-next-line no-console
     console.log('globalErrorHandler', error)
+    // eslint-disable-next-line no-console
     : console.log("globalErrorHandler", error)
 
  
@@ -68,15 +69,14 @@ const globalErrorHandler : ErrorRequestHandler
         ] : []
 
     }
-
-    
-
+ 
     res.status(statusCode).json({ 
         sucess: false,
         message,
         errorMessage,
         stack: config.env !== 'production' ? error?.stack : undefined
     })
+    
     // next()
 }
 
